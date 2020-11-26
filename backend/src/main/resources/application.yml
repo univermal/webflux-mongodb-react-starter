@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: "REACTIVE"
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/sample
+
+logging:
+  file: sample.log
+
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave512bitsKeySize
+    expiration: 28800
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: shutdown
+      base-path: /manage
+  endpoint:
+    health:
+      show-details: always
